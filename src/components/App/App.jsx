@@ -87,6 +87,7 @@ function App() {
                 Item Name:
                 </label><br />
                 <input
+                value={itemName}
                 type ="text"
                 placeholder="EG: Apples"
                 onChange={(evt) => setItemName(evt.target.value)}
@@ -95,6 +96,7 @@ function App() {
                 Quantity:
                 </label><br />
                 <input
+                value={itemQuantity}
                 type ="number"
                 placeholder="EG: 5"
                 onChange={(evt) => setItemQuantity(evt.target.value)}
@@ -103,6 +105,7 @@ function App() {
                 Unit:
                 </label><br />
                 <input
+                value={itemUnit}
                 type ="text"
                 placeholder="Unit (EG: Lbs)"
                 onChange={(evt) => setItemUnit(evt.target.value)}
