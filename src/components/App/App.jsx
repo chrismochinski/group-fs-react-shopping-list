@@ -102,9 +102,8 @@ function App() {
 
             </main>
             <ul>
-            {props.list.map(shoppingList => 
-            (<li key={shoppingList.id}>{shoppingList.item} 
-            {shoppingList.quantity} {shoppingList.unit}</li>)
+            {shoppingList.map(shopping => 
+            (<li key={shopping.id}>{shopping.item} - {shopping.quantity} {shopping.unit}</li>)
             )}
         </ul>
         </div>
