@@ -14,7 +14,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [] compose checklist
 ** [] create database with sample values/data **
 ** [] item component **
-    - Item object - {id: SERIAL PRIMARY KEY, name: VARCHAR(80), qty: NUMBER, unit: VARCHAR(20)}
+    - Item object - {id: SERIAL PRIMARY KEY, name: VARCHAR(80), qty: NUMBER, unit: VARCHAR(20),}
 
 COMPONENTS:
     [] Add Item Form Component
