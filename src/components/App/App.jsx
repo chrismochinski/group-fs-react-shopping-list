@@ -10,12 +10,26 @@ function App() {
     let [shoppingList, setShoppingList] = useState([]);
     let [itemName, setItemName] = useState('');
     let [itemQuantity, setItemQuantity] = useState('');
-    let [itemUnit, setItemUnit] = useState('');
+    let [itemUnit, setItemUnit] = useState('')
 
-    useEffect(() => {
-        fetchShoppingList()
-    }, [])
 
+  useEffect(() => {
+    fetchShoppingList();
+  }, []);
+
+  const fetchShoppingList = () => {
+    axios({
+      method: 'GET',
+      url: '/list',
+    }).then((response) => {
+      // response.data is what we sent from the server
+      console.log(response.data);
+      setShoppingList(response.data);
+    }).catch((error) => {
+      console.log(error);
+      alert('Error making GET request.');
+    })
+  }
 
     // POST the creature to our server
     const addItem = () => {
@@ -31,15 +45,6 @@ function App() {
             console.log('POST /list failed', error);
         })
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -96,6 +101,12 @@ function App() {
 
 
             </main>
+            <ul>
+            {props.list.map(shoppingList => 
+            (<li key={shoppingList.id}>{shoppingList.item} 
+            {shoppingList.quantity} {shoppingList.unit}</li>)
+            )}
+        </ul>
         </div>
     );
 }
