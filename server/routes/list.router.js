@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 // POST ROUTE
 router.post('/', (req, res) => {
     console.log(req.body);
-    const sqlText = `INSERT INTO "shopping-list" 
+    const sqlText = `INSERT INTO "shopping" 
                         ( "item", "quantity", "unit" ) 
                     VALUES 
                         ( $1, $2, $3 )

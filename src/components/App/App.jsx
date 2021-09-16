@@ -12,6 +12,11 @@ function App() {
     let [itemQuantity, setItemQuantity] = useState('');
     let [itemUnit, setItemUnit] = useState('')
 
+    const newItem = {
+        item: itemName, 
+        quantity: itemQuantity, 
+        unit: itemUnit
+    }
 
   useEffect(() => {
     fetchShoppingList();
@@ -32,7 +37,8 @@ function App() {
   }
 
     // POST the creature to our server
-    const addItem = () => {
+    const addItem = (evt) => {
+        evt.preventDefault(); // prevent default reload
         axios({
             method: 'POST',
             url: '/list',
@@ -95,7 +101,8 @@ function App() {
                 type ="text"
                 placeholder="Unit (EG: Lbs)"
                 onChange={(evt) => setItemUnit(evt.target.value)}
-                />
+                /><br /><br />
+                <button type="submit">Submit</button>
                 </form>
                 </div>
 
