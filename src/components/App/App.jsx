@@ -17,20 +17,12 @@ function App() {
     }, [])
 
 
-// THE FOLLOWING IS ONLY TO KEEP THINGS TEST FRIENDLY - TEMPORARY
 
-    //DELETE LATER - POST
-    const addItem = (event) => {
-        console.log('THIS IS TEMPORARY POST')
-    }
-    //delete later
-    //DELETE LATER - GET
-    const fetchShoppingList = (event) => {
-        console.log('THIS IS TEMPORARY GET')
-    }
-    //delete later
 
-// delete above
+    
+
+
+
 
 
     return (
