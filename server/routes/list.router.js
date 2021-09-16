@@ -61,6 +61,18 @@ router.delete('/clear', (req, res) => {
 
 });
 
+router.delete('/:id', (req, res) => {
+    const itemId = req.params.id;
+    const queryText = `DELETE FROM "shopping" WHERE "id" = $1;`;
+
+    pool.query(queryText, [itemId]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log("error in /list DELETE", error);
+        res.sendStatus(500);
+    });
+});
+
 // PUT ROUTE
 router.put('/buy-button/:id', (req, res) => {
 

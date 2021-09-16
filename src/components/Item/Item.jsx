@@ -14,19 +14,19 @@ function Item(props) {
         data-id={props.item.id} onClicked= {props.buyItem}>Buy</button>;
     }
 
-    const deleteButton = () => {
+    const deleteButton = (itemID) => {
         return <button class = "remove-button" 
-        data-id={props.item.id} onClicked= {props.removeItem}>Delete</button>;
+        data-id={props.item.id} onClicked= {props.removeItem(itemID)}>Delete</button>;
     }
 
-    const itemToggling = () => {
-        return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton()}</>;
+    const itemToggling = (itemID) => {
+        return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton(itemID)}</>;
     };
     //Things to 
     return <div class = "item_block">
         <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
-        {itemToggling()}
+        {itemToggling(props.item.id)}
     </div>;
 
 }
