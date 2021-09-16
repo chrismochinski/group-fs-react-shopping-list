@@ -50,6 +50,9 @@ function App() {
         }).catch(error => {
             console.log('POST /list failed', error);
         })
+        setItemName('');
+        setItemQuantity('');
+        setItemUnit('');
     }
 
 
@@ -57,10 +60,12 @@ function App() {
 
     // Uses DELETE to remove all items from the list
     const clearItems = () => {
-        axios({
-            method: 'DELETE',
-            url: '/list/clear'
-        }).then(response => {
+        axios.delete('/list/clear')
+        // axios({
+        //     method: 'DELETE',
+        //     url: '/list/clear'
+        // })
+        .then(response => {
             console.log('DELETE /list/clear', response);
             fetchShoppingList();
         }).catch(error => {
@@ -82,6 +87,7 @@ function App() {
                 Item Name:
                 </label><br />
                 <input
+                value={itemName}
                 type ="text"
                 placeholder="EG: Apples"
                 onChange={(evt) => setItemName(evt.target.value)}
@@ -90,6 +96,7 @@ function App() {
                 Quantity:
                 </label><br />
                 <input
+                value={itemQuantity}
                 type ="number"
                 placeholder="EG: 5"
                 onChange={(evt) => setItemQuantity(evt.target.value)}
@@ -98,15 +105,17 @@ function App() {
                 Unit:
                 </label><br />
                 <input
+                value={itemUnit}
                 type ="text"
                 placeholder="Unit (EG: Lbs)"
                 onChange={(evt) => setItemUnit(evt.target.value)}
                 /><br /><br />
                 <button type="submit">Submit</button>
                 </form>
+                <button onClick={() => clearItems()}>Clear All</button>     
                 </div>
 
-
+                
             </main>
             <ul>
             {shoppingList.map(shopping => 
