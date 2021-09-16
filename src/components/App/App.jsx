@@ -72,6 +72,18 @@ function App() {
             console.log('DELETE /list/clear has failed:', error);
         });
     }
+    
+    // Code added by Asif
+    const removeItem = (itemID) => {
+        axios.delete('/list/' + itemID)
+            .then(response => {
+                console.log('PUT /single', response.data);
+                fetchShoppingList();
+            }).catch(error => {
+                console.log('PUT /single error', error);
+            });
+    }
+    // End of code added by Asif
 
     return (
         <div className="App">
