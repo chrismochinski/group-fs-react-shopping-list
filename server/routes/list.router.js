@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
                     VALUES 
                         ( $1, $2, $3 )
                     `;
-    pool.query(sqlText, [ req.body.item, req.body.quantity, req.body.unit ])
+    pool.query(sqlText, [req.body.item, req.body.quantity, req.body.unit])
         .then((result) => {
             res.sendStatus(201);
         })
@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
 /**
  * Server-side code for removing all items from the datab
  */
- router.delete('/clear', (req, res) => {
+router.delete('/clear', (req, res) => {
     console.log(req.params);
     const queryText = `DELETE FROM "shopping";`;
     pool.query(queryText).then((result) => {
@@ -62,7 +62,21 @@ router.post('/', (req, res) => {
 });
 
 // PUT ROUTE
+router.put('/buy-button/:id', (req, res) => {
+
+    const sqlText = `UPDATE "shopping"
+                    SET "purchased" = 'TRUE'
+                    WHERE "id" = $1
+                    `;
+    pool.query(sqlText, [req.params.id])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+    });
 
 
-
-module.exports = router;
+    module.exports = router;

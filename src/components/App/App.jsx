@@ -56,8 +56,6 @@ function App() {
     }
 
 
-
-
     // Uses DELETE to remove all items from the list
     const clearItems = () => {
         axios.delete('/list/clear')
