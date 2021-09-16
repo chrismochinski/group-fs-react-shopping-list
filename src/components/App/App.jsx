@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
-
+import Item from '../Item/Item.jsx';
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
   }
 
     // POST the creature to our server
-    const addItem = (evt) => {
+        const addItem = (evt) => {
         evt.preventDefault(); // prevent default reload
         axios({
             method: 'POST',
@@ -87,7 +87,6 @@ function App() {
                 Item Name:
                 </label><br />
                 <input
-                value={itemName}
                 type ="text"
                 placeholder="EG: Apples"
                 onChange={(evt) => setItemName(evt.target.value)}
@@ -96,7 +95,6 @@ function App() {
                 Quantity:
                 </label><br />
                 <input
-                value={itemQuantity}
                 type ="number"
                 placeholder="EG: 5"
                 onChange={(evt) => setItemQuantity(evt.target.value)}
@@ -105,23 +103,20 @@ function App() {
                 Unit:
                 </label><br />
                 <input
-                value={itemUnit}
                 type ="text"
                 placeholder="Unit (EG: Lbs)"
                 onChange={(evt) => setItemUnit(evt.target.value)}
                 /><br /><br />
                 <button type="submit">Submit</button>
                 </form>
-                <button onClick={() => clearItems()}>Clear All</button>     
                 </div>
 
-                
             </main>
-            <ul>
+            <div class = "items">
             {shoppingList.map(shopping => 
-            (<li key={shopping.id}>{shopping.item} - {shopping.quantity} {shopping.unit}</li>)
+            (<Item item = {shopping}/>)
             )}
-        </ul>
+        </div>
         </div>
     );
 }

@@ -1,3 +1,4 @@
+import './Item.css';
 /**
  * The Item component: renders an item within the shopping list, showing the
  * item's name, the desired amount of purchase, and the option to either buy the
@@ -19,13 +20,13 @@ function Item(props) {
     }
 
     const itemToggling = () => {
-        return props.item.purchased ? <p>Purchased</p> : <p>{buyButton} {deleteButton}</p>;
+        return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton()}</>;
     };
     //Things to 
-    return <div class = "item-block">
-        <p>{props.item.item}</p>
+    return <div class = "item_block">
+        <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
-        {itemToggling}
+        {itemToggling()}
     </div>;
 
 }
