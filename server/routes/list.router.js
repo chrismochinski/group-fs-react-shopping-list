@@ -78,5 +78,19 @@ router.put('/buy-button/:id', (req, res) => {
         });
     });
 
+    // Code added by Asif
+    router.put('/reset-all', (req, res) => {
+   
+        const sqlText = `UPDATE "shopping" SET "purchased" = false`;
+        pool.query(sqlText)
+            .then((result) => {
+                res.sendStatus(201);
+            })
+            .catch((error) => {
+                console.log(`Error making database query ${sqlText}`, error);
+                res.sendStatus(500);
+            });
+    });
+    // End of code added by Asif
 
     module.exports = router;

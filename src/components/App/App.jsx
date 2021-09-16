@@ -13,28 +13,28 @@ function App() {
     let [itemUnit, setItemUnit] = useState('')
 
     const newItem = {
-        item: itemName, 
-        quantity: itemQuantity, 
+        item: itemName,
+        quantity: itemQuantity,
         unit: itemUnit
     }
 
-  useEffect(() => {
-    fetchShoppingList();
-  }, []);
+    useEffect(() => {
+        fetchShoppingList();
+    }, []);
 
-  const fetchShoppingList = () => {
-    axios({
-      method: 'GET',
-      url: '/list',
-    }).then((response) => {
-      // response.data is what we sent from the server
-      console.log(response.data);
-      setShoppingList(response.data);
-    }).catch((error) => {
-      console.log(error);
-      alert('Error making GET request.');
-    })
-  }
+    const fetchShoppingList = () => {
+        axios({
+            method: 'GET',
+            url: '/list',
+        }).then((response) => {
+            // response.data is what we sent from the server
+            console.log(response.data);
+            setShoppingList(response.data);
+        }).catch((error) => {
+            console.log(error);
+            alert('Error making GET request.');
+        })
+    }
 
     // POST the creature to our server
     const addItem = (evt) => {
@@ -59,69 +59,84 @@ function App() {
     // Uses DELETE to remove all items from the list
     const clearItems = () => {
         axios.delete('/list/clear')
-        // axios({
-        //     method: 'DELETE',
-        //     url: '/list/clear'
-        // })
-        .then(response => {
-            console.log('DELETE /list/clear', response);
-            fetchShoppingList();
-        }).catch(error => {
-            console.log('DELETE /list/clear has failed:', error);
-        });
+            // axios({
+            //     method: 'DELETE',
+            //     url: '/list/clear'
+            // })
+            .then(response => {
+                console.log('DELETE /list/clear', response);
+                fetchShoppingList();
+            }).catch(error => {
+                console.log('DELETE /list/clear has failed:', error);
+            });
     }
+
+    // Code added by Asif
+    const removeItem = (itemID) => {
+        axios.delete('/list/' + itemID)
+            .then(response => {
+                console.log('PUT /single', response.data);
+                fetchShoppingList();
+            }).catch(error => {
+                console.log('PUT /single error', error);
+            });
+    }
+    // End of code added by Asif
 
     return (
         <div className="App">
             <Header />
             <main>
-                
+
                 {/* COMPLETE: ITEM/QTY/UNIT FORM BELOW */}
                 <div>
-                <p><i>Under Construction...</i></p>
-                <form onSubmit={addItem}>
-                <h2>Add An Item:</h2>
-                <label>
-                Item Name:
-                </label><br />
-                <input
-                value={itemName}
-                type ="text"
-                placeholder="EG: Apples"
-                onChange={(evt) => setItemName(evt.target.value)}
-                /><br /><br />
-                <label>
-                Quantity:
-                </label><br />
-                <input
-                value={itemQuantity}
-                type ="number"
-                placeholder="EG: 5"
-                onChange={(evt) => setItemQuantity(evt.target.value)}
-                /><br /><br />
-                <label>
-                Unit:
-                </label><br />
-                <input
-                value={itemUnit}
-                type ="text"
-                placeholder="Unit (EG: Lbs)"
-                onChange={(evt) => setItemUnit(evt.target.value)}
-                /><br /><br />
-                <button type="submit">Submit</button>
-                </form>
-                <button onClick={() => clearItems()}>Clear All</button>     
+                    <p><i>Under Construction...</i></p>
+                    <form onSubmit={addItem}>
+                        <h2>Add An Item:</h2>
+                        <label>
+                            Item Name:
+                        </label><br />
+                        <input
+                            value={itemName}
+                            type="text"
+                            placeholder="EG: Apples"
+                            onChange={(evt) => setItemName(evt.target.value)}
+                        /><br /><br />
+                        <label>
+                            Quantity:
+                        </label><br />
+                        <input
+                            value={itemQuantity}
+                            type="number"
+                            placeholder="EG: 5"
+                            onChange={(evt) => setItemQuantity(evt.target.value)}
+                        /><br /><br />
+                        <label>
+                            Unit:
+                        </label><br />
+                        <input
+                            value={itemUnit}
+                            type="text"
+                            placeholder="Unit (EG: Lbs)"
+                            onChange={(evt) => setItemUnit(evt.target.value)}
+                        /><br /><br />
+                        <button type="submit">Submit</button>
+                    </form>
+                    <button onClick={() => clearItems()}>Clear All</button>
                 </div>
 
-                
+
             </main>
             <ul>
-            {shoppingList.map(shopping => 
-            (<li key={shopping.id}>{shopping.item} - {shopping.quantity} {shopping.unit}</li>)
-            )}
-        </ul>
+                {shoppingList.map(shopping =>
+                    (<li 
+                    key={shopping.id}>{shopping.item} - {shopping.quantity} {shopping.unit}
+                    </li>)
+                )}
+            </ul>
         </div>
     );
+
 }
 
 export default App;
