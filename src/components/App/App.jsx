@@ -76,13 +76,13 @@ function App() {
     // Code added by Asif
     const removeItem = (itemID) => {
         console.log('in REMOVE ITEM client side', itemID);
-        //axios.delete('/list/' + itemID)
-        //    .then(response => {
-        //       console.log('PUT /single', response.data);
-        //        fetchShoppingList();
-        //    }).catch(error => {
-        //        console.log('PUT /single error', error);
-        //    });
+        axios.delete('/list/' + itemID)
+            .then(response => {
+               console.log('DELETE /single', response.data);
+                fetchShoppingList();
+            }).catch(error => {
+               console.log('DELETE /single error', error);
+            });
     }
     // End of code added by Asif
 
@@ -131,7 +131,7 @@ function App() {
             </main>
             <div className="items">
                 {shoppingList.map(shopping =>
-                (<Item 
+                (<Item
                     item={shopping}
                     removeItem={removeItem} />)
                 )}
