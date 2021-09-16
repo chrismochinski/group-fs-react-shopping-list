@@ -110,7 +110,7 @@ function App() {
             </main>
             <div class = "items">
             {shoppingList.map(shopping => 
-            (<li key={shopping.id}><Item item = {shopping}/></li>)
+            (<Item item = {shopping}/>)
             )}
         </div>
         </div>

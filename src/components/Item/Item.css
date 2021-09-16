@@ -1,8 +1,14 @@
 .item_block {
-    align-self: left;
+    float: left;
     /*border-radius: 5px;*/
+    padding: 50px 0;
     text-align: center;
-    background-color: aqua;
+    /*background-color: aqua;*/
+    width: 200px;
+    height: 100px;
+    align-content: center;
+    border-style: solid;
+    margin: 5px;
 }
 
 p {

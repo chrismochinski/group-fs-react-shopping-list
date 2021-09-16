@@ -24,7 +24,7 @@ function Item(props) {
     };
     //Things to 
     return <div class = "item_block">
-        <p>{props.item.item}</p>
+        <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
         {itemToggling()}
     </div>;
