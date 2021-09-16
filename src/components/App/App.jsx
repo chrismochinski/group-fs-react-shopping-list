@@ -37,7 +37,7 @@ function App() {
   }
 
     // POST the creature to our server
-    const addItem = (evt) => {
+        const addItem = (evt) => {
         evt.preventDefault(); // prevent default reload
         axios({
             method: 'POST',
@@ -50,6 +50,9 @@ function App() {
         }).catch(error => {
             console.log('POST /list failed', error);
         })
+        setItemName('');
+        setItemQuantity('');
+        setItemUnit('');
     }
 
 
@@ -57,10 +60,12 @@ function App() {
 
     // Uses DELETE to remove all items from the list
     const clearItems = () => {
-        axios({
-            method: 'DELETE',
-            url: '/list/clear'
-        }).then(response => {
+        axios.delete('/list/clear')
+        // axios({
+        //     method: 'DELETE',
+        //     url: '/list/clear'
+        // })
+        .then(response => {
             console.log('DELETE /list/clear', response);
             fetchShoppingList();
         }).catch(error => {
@@ -105,7 +110,6 @@ function App() {
                 <button type="submit">Submit</button>
                 </form>
                 </div>
-
 
             </main>
             <div class = "items">
