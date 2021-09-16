@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
  */
  router.delete('/clear', (req, res) => {
     console.log(req.params);
-    const queryText = `REMOVE * FROM "shopping";`;
+    const queryText = `REMOVE FROM "shopping";`;
     pool.query(queryText).then((result) => {
         res.sendStatus(200);
     }).catch((error) => {
