@@ -4,16 +4,17 @@
 CREATE TABLE "shopping" (
     "id" SERIAL PRIMARY KEY,
     "item" VARCHAR(80) NOT NULL,
-    "quantity" NUMBER,
-    "unit" VARCHAR(20)
+    "quantity" DECIMAL(8,2),
+    "unit" VARCHAR(20),
+    "purchased" BOOLEAN DEFAULT FALSE
 );
 
 INSERT INTO "shopping" 
     ("item", "quantity", "unit")
 VALUES
-    ('Apples', 5, 'lbs'),
+    ('Apples', 5.382, 'lbs'),
     ('Bread', 1, 'loaf'),
-    ('Milk', 1, 'gallon'),
+    ('Milk', .5, 'gallon'),
     ('Almonds', 2, 'cups'),
     ('Banana', 1, 'bunch');
 
