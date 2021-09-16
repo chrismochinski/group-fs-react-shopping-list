@@ -7,19 +7,7 @@ import './App.css';
 
 function App() {
 
-    let [shoppingList, setShoppingList] = useState([]);
-    let [itemName, setItemName] = useState('');
-    let [itemQuantity, setItemQuantity] = useState('');
-    let [itemUnit, setItemUnit] = useState('');
 
-    useEffect(() => {
-        fetchShoppingList()
-    }, [])
-
-
-
-
-    
 
 
 
