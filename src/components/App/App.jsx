@@ -16,34 +16,40 @@ function App() {
         fetchShoppingList()
     }, [])
 
+
+// THE FOLLOWING IS ONLY TO KEEP THINGS TEST FRIENDLY - TEMPORARY
+
     //DELETE LATER - POST
     const addItem = (event) => {
         console.log('THIS IS TEMPORARY POST')
     }
     //delete later
-
     //DELETE LATER - GET
     const fetchShoppingList = (event) => {
         console.log('THIS IS TEMPORARY GET')
     }
     //delete later
 
+// delete above
+
 
     return (
         <div className="App">
             <Header />
             <main>
+                
+                {/* COMPLETE: ITEM/QTY/UNIT FORM BELOW */}
                 <div>
-                <p>Under Construction...</p>
+                <p><i>Under Construction...</i></p>
                 <form onSubmit={addItem}>
-                <h2>Add An Item:
+                <h2>Add An Item:</h2>
                 <label>
                 Item Name:
                 </label><br />
                 <input
                 type ="text"
                 placeholder="EG: Apples"
-                onChange={(evt) => set }
+                onChange={(evt) => setItemName(evt.target.value)}
                 /><br /><br />
                 <label>
                 Quantity:
@@ -51,7 +57,7 @@ function App() {
                 <input
                 type ="number"
                 placeholder="EG: 5"
-                onChange={(evt) => set }
+                onChange={(evt) => setItemQuantity(evt.target.value)}
                 /><br /><br />
                 <label>
                 Unit:
@@ -59,12 +65,10 @@ function App() {
                 <input
                 type ="text"
                 placeholder="Unit (EG: Lbs)"
-                onChange={(evt) => set }
+                onChange={(evt) => setItemUnit(evt.target.value)}
                 />
                 </form>
                 </div>
-
-
 
 
             </main>
