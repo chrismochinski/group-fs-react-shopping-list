@@ -30,7 +30,20 @@ router.post('/', (req, res) => {
 
 // DELETE ROUTE
 
+/**
+ * Server-side code for removing all items from the datab
+ */
+ router.delete('/clear', (req, res) => {
+    console.log(req.params);
+    const queryText = `REMOVE FROM "shopping";`;
+    pool.query(queryText).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log("error in /clear DELETE", error);
+        res.sendStatus(500);
+    });
 
+});
 
 // PUT ROUTE
 

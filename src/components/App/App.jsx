@@ -34,6 +34,29 @@ function App() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+    // Uses DELETE to remove all items from the list
+    const clearItems = () => {
+        axios({
+            method: 'DELETE',
+            url: '/list/clear'
+        }).then(response => {
+            console.log('DELETE /list/clear', response);
+            fetchShoppingList();
+        }).catch(error => {
+            console.log('DELETE /list/clear has failed:', error);
+        });
+    }
+
     return (
         <div className="App">
             <Header />
