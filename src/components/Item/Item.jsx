@@ -11,24 +11,31 @@ function Item(props) {
 
     const buyButton = () => {
         return <button class = "buy-button" 
-        data-id={props.item.id} onClicked= {props.buyItem}>Buy</button>;
+        data-id={props.item.id} onClick= {props.buyItem}>Buy</button>;
     }
 
-    const deleteButton = () => {
+    const deleteButton = (itemID) => {
         return <button class = "remove-button" 
-        data-id={props.item.id} onClicked= {props.removeItem}>Delete</button>;
+        data-id={props.item.id} onClick= {props.removeItem(itemID)}>Delete</button>;
     }
 
-    const itemToggling = () => {
-        return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton()}</>;
+    const itemToggling = (itemID) => {
+        return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton(itemID)}</>;
     };
     //Things to 
-    return <div class = "item_block">
+    return <div key = {props.item.id} class = "item_block">
         <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
-        {itemToggling()}
+        {props.item.purchased ? <p>Purchased</p> : <>
+<button onClick={() => props.buyItem(props.item.id)}>Buy</button>
+<button onClick={() => props.removeItem(props.item.id)}>Delete</button></>}
+        
     </div>;
-
+//{props.item.purchased ? <p>Purchased</p> : <>
+//<button class = "buy-button" 
+//data-id={props.item.id} onClick= {props.buyItem}>Buy</button>
+//<button class = "remove-button" 
+//data-id={props.item.id} onClick= {props.removeItem}>Delete</button></>}
 }
 
 export default Item;
