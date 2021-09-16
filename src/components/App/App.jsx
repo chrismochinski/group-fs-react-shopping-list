@@ -109,6 +109,7 @@ function App() {
                 /><br /><br />
                 <button type="submit">Submit</button>
                 </form>
+                <button onClick={() => clearItems()}>Clear All</button>     
                 </div>
 
             </main>
