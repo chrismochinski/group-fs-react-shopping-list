@@ -1,6 +1,8 @@
 .item_block {
-    margin: auto;
-    border-radius: 5px;
+    align-self: left;
+    /*border-radius: 5px;*/
+    text-align: center;
+    background-color: aqua;
 }
 
 p {
