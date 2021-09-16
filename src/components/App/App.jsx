@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
-
+import Item from '../Item/Item.jsx';
 
 function App() {
 
@@ -108,11 +108,11 @@ function App() {
 
 
             </main>
-            <ul>
+            <div class = "items">
             {shoppingList.map(shopping => 
-            (<li key={shopping.id}>{shopping.item} - {shopping.quantity} {shopping.unit}</li>)
+            (<li key={shopping.id}><Item item = {shopping}/></li>)
             )}
-        </ul>
+        </div>
         </div>
     );
 }
