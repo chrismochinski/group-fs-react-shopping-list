@@ -38,7 +38,8 @@ function App() {
             </main>
             <ul>
             {props.list.map(shoppingList => 
-            (<li key={shoppingList.id}>{shoppingList.item} is from {shoppingList.quantity}</li>)
+            (<li key={shoppingList.id}>{shoppingList.item} 
+            {shoppingList.quantity} {shoppingList.unit}</li>)
             )}
         </ul>
         </div>
