@@ -74,7 +74,7 @@ router.delete('/:id', (req, res) => {
 });
 
 // PUT ROUTE
-router.put('/buy-button/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 
     const sqlText = `UPDATE "shopping"
                     SET "purchased" = 'TRUE'

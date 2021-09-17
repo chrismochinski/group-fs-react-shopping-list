@@ -86,6 +86,17 @@ function App() {
     }
     // End of code added by Asif
 
+    const buyItem = (itemID) => {
+        console.log('in PUT ITEM client side', itemID);
+        axios.put('/list/' + itemID)
+        .then(response => {
+            console.log('PUT /single', response.data);
+            fetchShoppingList();
+        }).catch(error => {
+            console.log('PUT /single error', error);
+        })
+    }
+
     return (
         <div className="App">
             <Header />
@@ -133,6 +144,7 @@ function App() {
                 {shoppingList.map(shopping =>
                 (<Item
                     item={shopping}
+                    buyItem={buyItem}
                     removeItem={removeItem} />)
                 )}
             </div>

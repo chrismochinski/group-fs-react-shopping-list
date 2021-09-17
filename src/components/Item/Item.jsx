@@ -9,7 +9,7 @@ import './Item.css';
  */
 function Item(props) {
 
-    const buyButton = () => {
+    const buyButton = (itemID) => {
         return <button class = "buy-button" 
         data-id={props.item.id} onClick= {props.buyItem}>Buy</button>;
     }
