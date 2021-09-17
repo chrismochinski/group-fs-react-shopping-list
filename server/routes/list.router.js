@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
 router.delete('/clear', (req, res) => {
     console.log(req.params);
     const queryText = `DELETE FROM "shopping";`;
-    pool.query(queryText).then((result) => {
+    pool.query(queryText).then(result => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log("error in /clear DELETE", error);
@@ -74,12 +74,12 @@ router.delete('/:id', (req, res) => {
 });
 
 // PUT ROUTE
-router.put('/buy-button/:id', (req, res) => {
+router.put('/purchase/:id', (req, res) => {
 
     const sqlText = `UPDATE "shopping"
-                    SET "purchased" = 'TRUE'
+                    SET "purchased" = TRUE
                     WHERE "id" = $1
-                    `;
+                    ;`;
     pool.query(sqlText, [req.params.id])
         .then((result) => {
             res.sendStatus(201);
@@ -88,21 +88,21 @@ router.put('/buy-button/:id', (req, res) => {
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500);
         });
-    });
+});
 
-    // Code added by Asif
-    router.put('/reset-all', (req, res) => {
-   
-        const sqlText = `UPDATE "shopping" SET "purchased" = false`;
-        pool.query(sqlText)
-            .then((result) => {
-                res.sendStatus(201);
-            })
-            .catch((error) => {
-                console.log(`Error making database query ${sqlText}`, error);
-                res.sendStatus(500);
-            });
-    });
-    // End of code added by Asif
+// Code added by Asif
+router.put('/reset', (req, res) => {
+    // console.log(res);
+    const sqlText = `UPDATE "shopping" SET "purchased" = false;`;
+    pool.query(sqlText)
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
+// End of code added by Asif
 
-    module.exports = router;
+module.exports = router;
