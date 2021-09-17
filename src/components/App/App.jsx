@@ -55,7 +55,15 @@ function App() {
         setItemUnit('');
     }
 
-
+    const resetAll = () => {
+        axios.put('/list/reset')
+        .then(response => {
+            console.log('PUT /list/reset', response);
+            fetchShoppingList();
+        }).catch(error => {
+            console.log('PUT /list/reset has failed:', error);
+        });
+    }
 
 
     // Uses DELETE to remove all items from the list
@@ -88,7 +96,7 @@ function App() {
 
     const buyItem = (itemID) => {
         console.log('in PUT ITEM client side', itemID);
-        axios.put('/list/' + itemID)
+        axios.put('/list/purchase/' + itemID)
         .then(response => {
             console.log('PUT /single', response.data);
             fetchShoppingList();
@@ -96,6 +104,7 @@ function App() {
             console.log('PUT /single error', error);
         })
     }
+    
 
     return (
         <div className="App">
@@ -137,6 +146,7 @@ function App() {
                         <button type="submit">Submit</button>
                     </form>
                     <button onClick={() => clearItems()}>Clear All</button>
+                    <button onClick={() => resetAll()}>Reset</button>
                 </div>
 
             </main>

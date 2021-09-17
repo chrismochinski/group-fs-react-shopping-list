@@ -22,7 +22,7 @@ function Item(props) {
     const itemToggling = (itemID) => {
         return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton(itemID)}</>;
     };
-    //Things to 
+    // purchase/not purchased conditional
     return <div key = {props.item.id} class = "item_block">
         <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
