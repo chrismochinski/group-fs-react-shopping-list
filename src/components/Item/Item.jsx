@@ -10,12 +10,12 @@ import './Item.css';
 function Item(props) {
 
     const buyButton = () => {
-        return <button class = "buy-button" 
+        return <button className = "buy-button" 
         data-id={props.item.id} onClick= {props.buyItem}>Buy</button>;
     }
 
     const deleteButton = (itemID) => {
-        return <button class = "remove-button" 
+        return <button className = "remove-button" 
         data-id={props.item.id} onClick= {props.removeItem(itemID)}>Delete</button>;
     }
 
@@ -23,7 +23,7 @@ function Item(props) {
         return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton(itemID)}</>;
     };
     //Things to 
-    return <div key = {props.item.id} class = "item_block">
+    return <div key = {props.item.id} className = "item_block">
         <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
         {props.item.purchased ? <p>Purchased</p> : <>
