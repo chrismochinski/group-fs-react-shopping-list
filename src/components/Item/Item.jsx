@@ -23,7 +23,7 @@ function Item(props) {
         return props.item.purchased ? <p>Purchased</p> : <>{buyButton()} {deleteButton(itemID)}</>;
     };
     //Things to 
-    return <div key = {props.item.id} className = "item_block">
+    return <div key = {props.item.id} class = "item_block">
         <p><b>{props.item.item}</b></p>
         <p>{props.item.quantity} {props.item.unit}</p>
         {props.item.purchased ? <p>Purchased</p> : <>

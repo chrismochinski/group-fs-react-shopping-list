@@ -71,6 +71,18 @@ function App() {
             });
     }
 
+
+    const resetAll = () => {
+        axios.put('/list/reset')
+        .then(response => {
+            console.log('PUT /list/reset', response);
+            fetchShoppingList();
+        }).catch(error => {
+            console.log('PUT /list/reset has failed:', error);
+        });
+    }
+
+
     // Code added by Asif
     const removeItem = (itemID) => {
         console.log('in REMOVE ITEM client side', itemID);
@@ -83,6 +95,18 @@ function App() {
             });
     }
     // End of code added by Asif
+
+    const buyItem = (itemID) => {
+        console.log('in PUT ITEM client side', itemID);
+        axios.put('/list/purchase/' + itemID)
+        .then(response => {
+            console.log('PUT /single', response.data);
+            fetchShoppingList();
+        }).catch(error => {
+            console.log('PUT /single error', error);
+        })
+    }
+    
 
     return (
         <div className="App">
@@ -124,6 +148,7 @@ function App() {
                         <button type="submit">Submit</button>
                     </form>
                     <button onClick={() => clearItems()}>Clear All</button>
+                    <button onClick={() => resetAll()}>Reset</button>
                 </div>
 
             </main>
@@ -131,6 +156,7 @@ function App() {
                 {shoppingList.map(shopping =>
                 (<Item
                     item={shopping}
+                    buyItem={buyItem}
                     removeItem={removeItem} />)
                 )}
             </div>
